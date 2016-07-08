@@ -177,8 +177,8 @@ struct private_handle_t {
             hnd->magic != sMagic) 
         {
             ALOGE("gralloc: %s invalid gralloc handle (at %p)", __func__, reinterpret_cast<void *>(const_cast<native_handle *>(h)));
-            //ALOGE("gralloc: version=%d(%d) numInts=%d(%d) numFds=%d(%d) magic=%d(%d)", 
-            //      h->version, sizeof(native_handle), hnd->numInts, sNumInts, hnd->numFds, sNumFds, hnd->magic, sMagic);
+            ALOGE("gralloc: version=%d(%d) numInts=%d(%d) numFds=%d(%d) magic=%d(%d)", 
+                  h->version, sizeof(native_handle), hnd->numInts, sNumInts, hnd->numFds, sNumFds, hnd->magic, sMagic);
             return -EINVAL;
         }
         return 0;

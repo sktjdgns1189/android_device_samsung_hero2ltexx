@@ -113,13 +113,13 @@ static int fb_post(struct framebuffer_device_t* dev, buffer_handle_t buffer)
     cfg[0].fd_idma[2]= -1;
     cfg[0].plane_alpha = 255;
     cfg[0].blending = DECON_BLENDING_NONE;
-    cfg[0].idma_type = IDMA_G0;
+    cfg[0].idma_type = IDMA_G1;
     cfg[0].src = {0, 0, mod->xres, mod->yres, mod->xres, mod->yres};
     cfg[0].dst = {0, 0, mod->xres, mod->yres, mod->xres, mod->yres};
     cfg[0].format = exynos5_format_to_decon(handle->format);
     cfg[0].fence_fd = -1;
 
-    //ALOGD("%s format=0x%x", __FUNCTION__, handle->format);
+    ALOGD("%s format=0x%x", __FUNCTION__, handle->format);
 
     int ret = ioctl(mod->fb_fd, S3CFB_WIN_CONFIG, &win_data);
     for (size_t i = 0; i < NUM_HW_WINDOWS; i++)

@@ -20,13 +20,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils libstlport
-
-LOCAL_C_INCLUDES := hardware/samsung_slsi-cm/exynos7580/include
-
-ifneq ($(filter exynos7580, $(TARGET_SOC)),)
-	LOCAL_CFLAGS += -DUSES_EXYNOS_7580
-endif
+LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils
 
 LOCAL_SRC_FILES := 	\
 	gralloc.cpp 	\

@@ -1,8 +1,7 @@
 #ifndef __DECON_FB_H__
 #define __DECON_FB_H__
 
-#define MAX_DECON_WIN           (7)
-#define MAX_DECON_EXT_WIN       (5)
+#define MAX_DECON_WIN           8
 #define MAX_BUF_PLANE_CNT       3
 
 typedef __u64 dma_addr_t;
@@ -40,13 +39,15 @@ struct s3c_fb_user_ion_client {
 
 enum decon_idma_type {
         IDMA_G0 = 0x0,
-        IDMA_G1,
-        IDMA_VG0,
-        IDMA_VG1,
-        IDMA_VGR0,
-        IDMA_VGR1,
-        IDMA_G2,
-        IDMA_G3,
+	IDMA_G1,
+	IDMA_VG0,
+	IDMA_VG1,
+	IDMA_G2,
+	IDMA_G3,
+	IDMA_VGR0,
+	IDMA_VGR1,
+	ODMA_WB,
+	IDMA_G0_S,
 };
 
 enum decon_pixel_format {
@@ -77,6 +78,9 @@ enum decon_pixel_format {
         DECON_PIXEL_FORMAT_YVU420,
         DECON_PIXEL_FORMAT_YUV420M,
         DECON_PIXEL_FORMAT_YVU420M,
+	/* YUV - support for single plane */
+	DECON_PIXEL_FORMAT_NV12N,
+	DECON_PIXEL_FORMAT_NV12N_10B,
 
         DECON_PIXEL_FORMAT_MAX,
 };
@@ -129,6 +133,7 @@ struct decon_win_config {
                 DECON_WIN_STATE_UPDATE,
         } state;
 
+	/* Reusability:This struct is used for IDMA and ODMA */
         union {
                 __u32 color;
                 struct {
@@ -141,10 +146,8 @@ struct decon_win_config {
                         struct vpp_params               vpp_parm;
                         /* no read area of IDMA */
                         struct decon_win_rect           block_area;
-#ifndef USES_EXYNOS_7580
                         struct decon_win_rect           transparent_area;
                         struct decon_win_rect           opaque_area;
-#endif
                         /* source framebuffer coordinates */
                         struct decon_frame              src;
                 };
@@ -153,6 +156,7 @@ struct decon_win_config {
         /* destination OSD coordinates */
         struct decon_frame dst;
         bool protection;
+        bool compression;
 };
 
 struct decon_win_config_data {
