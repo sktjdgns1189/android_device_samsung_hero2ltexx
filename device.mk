@@ -94,6 +94,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml \
     $(LOCAL_PATH)/configs/lhd.conf:system/etc/lhd.conf
 
+# Gralloc
+PRODUCT_PACKAGES += \
+    gralloc.exynos5
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \

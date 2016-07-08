@@ -103,6 +103,7 @@ TARGET_RECOVERY_FSTAB := $(HERO2_PATH)/rootdir/etc/fstab.samsungexynos8890
 # Platform
 TARGET_BOARD_PLATFORM := exynos5
 TARGET_SLSI_VARIANT := blobs
+COMMON_GLOBAL_CFLAGS += -DEXYNOS5_ENHANCEMENTS
 
 # Radio
 #BOARD_RIL_CLASS := ../../../$(HERO2_PATH)/ril
