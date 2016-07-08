@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The Dokdo Project
+ * Copyright (C) 2016 The Dokdo Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
 
 /**
- * RIL customization for Galaxy S6.
+ * RIL customization for Galaxy S7.
  * {@hide}
  */
 public class heroRIL extends RIL implements CommandsInterface {
